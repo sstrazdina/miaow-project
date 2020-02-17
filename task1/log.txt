@@ -1,0 +1,12 @@
+$ git log
+commit 7cb913074ca8561c9f18983eff685a024c13c27a (HEAD -> master)
+Author: sstrazdina <strazdinakathrine@gmail.com>
+Date:   Mon Feb 17 17:59:29 2020 +0300
+
+    add status
+
+commit ce899753dbbc9514deae96fad9a336be1ab1de75
+Author: sstrazdina <strazdinakathrine@gmail.com>
+Date:   Mon Feb 17 17:45:55 2020 +0300
+
+    add .gitignore
