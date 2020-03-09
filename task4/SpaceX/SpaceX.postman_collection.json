@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "5ff5afd0-edd6-4cd4-b9c5-4703e311ffb5",
+		"name": "SpaceX",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get_dragon_2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spacexdata.com/v3/dragons/dragon2",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spacexdata",
+						"com"
+					],
+					"path": [
+						"v3",
+						"dragons",
+						"dragon2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_upcoming_launches",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spacexdata.com/v3/launches/upcoming",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spacexdata",
+						"com"
+					],
+					"path": [
+						"v3",
+						"launches",
+						"upcoming"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Upcoming Launches",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spacexdata.com/v3/launches/upcoming",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spacexdata",
+								"com"
+							],
+							"path": [
+								"v3",
+								"launches",
+								"upcoming"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "CF-RAY",
+							"value": "4554591c6e089b08-DFW",
+							"name": "CF-RAY",
+							"description": "Custom header"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip",
+							"name": "Content-Encoding",
+							"description": "The type of encoding used on the data."
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 04 Sep 2018 23:48:38 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\"",
+							"name": "Expect-CT",
+							"description": "Custom header"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains",
+							"name": "Strict-Transport-Security",
+							"description": "A HSTS Policy informing the HTTP client how long to cache the HTTPS only policy and whether this applies to subdomains."
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding, Origin",
+							"name": "Vary",
+							"description": "Tells downstream proxies how to match future request headers to decide whether the cached response can be used rather than requesting a fresh one from the origin server."
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff",
+							"name": "X-Content-Type-Options",
+							"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off",
+							"name": "X-DNS-Prefetch-Control",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen",
+							"name": "X-Download-Options",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN",
+							"name": "X-Frame-Options",
+							"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "40ms",
+							"name": "X-Response-Time",
+							"description": "Custom header"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block",
+							"name": "X-XSS-Protection",
+							"description": "Cross-site scripting (XSS) filter"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Tue Aug 06 2019 12:13:24 GMT+0300 (Russia TZ 2 Standard Time)",
+							"httpOnly": true,
+							"domain": "spacexdata.com",
+							"path": "/",
+							"secure": true,
+							"value": "d3c2fe607fcda7d7bf01572dc3b2c16891533546804",
+							"key": "__cfduid"
+						}
+					],
+					"body": "[{\"flight_number\":68,\"mission_name\":\"Telstar 18V\",\"launch_year\":\"2018\",\"launch_date_unix\":1536463380,\"launch_date_utc\":\"2018-09-09T03:23:00.000Z\",\"launch_date_local\":\"2018-09-08T23:23:00-04:00\",\"rocket\":{\"rocket_id\":\"falcon9\",\"rocket_name\":\"Falcon 9\",\"rocket_type\":\"FT\",\"first_stage\":{\"cores\":[{\"core_serial\":\"B1049\",\"flight\":1,\"block\":5,\"reused\":false,\"land_success\":null,\"landing_type\":\"ASDS\",\"landing_vehicle\":\"OCISLY\"}]},\"second_stage\":{\"block\":null,\"payloads\":[{\"payload_id\":\"Telstar 18V\",\"norad_id\":[],\"reused\":false,\"customers\":[\"Telesat\"],\"nationality\":\"Canada\",\"manufacturer\":\"SSL\",\"payload_type\":\"Satellite\",\"payload_mass_kg\":null,\"payload_mass_lbs\":null,\"orbit\":\"GTO\",\"orbit_params\":{\"reference_system\":\"geocentric\",\"regime\":\"geostationary\",\"longitude\":138,\"semi_major_axis_km\":null,\"eccentricity\":null,\"periapsis_km\":null,\"apoapsis_km\":null,\"inclination_deg\":null,\"period_min\":null,\"lifespan_years\":15}}]},\"fairings\":{\"reused\":false,\"recovery_attempt\":false,\"recovered\":false,\"ship\":null}},\"telemetry\":{\"flight_club\":null},\"launch_site\":{\"site_id\":\"ccafs_slc_40\",\"site_name\":\"CCAFS SLC 40\",\"site_name_long\":\"Cape Canaveral Air Force Station Space Launch Complex 40\"},\"launch_success\":null,\"links\":{\"mission_patch\":null,\"mission_patch_small\":null,\"reddit_campaign\":\"https://www.reddit.com/r/spacex/comments/95cte4/telstar_18v_apstar_5c_launch_campaign_thread/\",\"reddit_launch\":null,\"reddit_recovery\":null,\"reddit_media\":null,\"presskit\":null,\"article_link\":null,\"wikipedia\":null,\"video_link\":null},\"details\":null,\"upcoming\":true,\"static_fire_date_utc\":\"2018-09-01T00:00:00.000Z\"},{\"flight_number\":69,\"mission_name\":\"SAOCOM 1A\",\"launch_year\":\"2018\",\"launch_date_unix\":1538870400,\"launch_date_utc\":\"2018-10-07T00:00:00.000Z\",\"launch_date_local\":\"2018-10-06T17:00:00-07:00\",\"rocket\":{\"rocket_id\":\"falcon9\",\"rocket_name\":\"Falcon 9\",\"rocket_type\":\"FT\",\"first_stage\":{\"cores\":[{\"core_serial\":\"B1048\",\"flight\":2,\"block\":5,\"reused\":true,\"land_success\":null,\"landing_type\":\"RTLS\",\"landing_vehicle\":\"LZ-3\"}]},\"second_stage\":{\"block\":null,\"payloads\":[{\"payload_id\":\"SAOCOM 1A\",\"norad_id\":[],\"reused\":false,\"customers\":[\"CONAE\"],\"nationality\":null,\"manufacturer\":null,\"payload_type\":\"Satellite\",\"payload_mass_kg\":1600,\"payload_mass_lbs\":3527.4,\"orbit\":\"SSO\",\"orbit_params\":{\"reference_system\":\"geocentric\",\"regime\":\"sun-synchronous\",\"longitude\":null,\"semi_major_axis_km\":null,\"eccentricity\":null,\"periapsis_km\":null,\"apoapsis_km\":null,\"inclination_deg\":null,\"period_min\":null,\"lifespan_years\":null}}]},\"fairings\":{\"reused\":false,\"recovery_attempt\":null,\"recovered\":null,\"ship\":null}},\"telemetry\":{\"flight_club\":null},\"launch_site\":{\"site_id\":\"vafb_slc_4e\",\"site_name\":\"VAFB SLC 4E\",\"site_name_long\":\"Vandenberg Air Force Base Space Launch Complex 4E\"},\"launch_success\":null,\"links\":{\"mission_patch\":null,\"mission_patch_small\":null,\"reddit_campaign\":null,\"reddit_launch\":null,\"reddit_recovery\":null,\"reddit_media\":null,\"presskit\":null,\"article_link\":null,\"wikipedia\":null,\"video_link\":null},\"details\":null,\"upcoming\":true,\"static_fire_date_utc\":null},{\"flight_number\":70,\"mission_name\":\"CCtCap Demo Mission 1\",\"launch_year\":\"2018\",\"launch_date_unix\":1541030400,\"launch_date_utc\":\"2018-11-01T00:00:00Z\",\"launch_date_local\":\"2018-11-01T00:00:00-04:00\",\"rocket\":{\"rocket_id\":\"falcon9\",\"rocket_name\":\"Falcon 9\",\"rocket_type\":\"FT\",\"first_stage\":{\"cores\":[{\"core_serial\":null,\"flight\":null,\"block\":5,\"reused\":null,\"land_success\":null,\"landing_type\":null,\"landing_vehicle\":null}]},\"second_stage\":{\"block\":5,\"payloads\":[{\"payload_id\":\"CCtCap\",\"norad_id\":[],\"cap_serial\":null,\"reused\":false,\"customers\":[\"NASA (CRS)\"],\"nationality\":\"United States\",\"manufacturer\":\"SpaceX\",\"payload_type\":\"Crew Dragon\",\"payload_mass_kg\":null,\"payload_mass_lbs\":null,\"orbit\":\"ISS\",\"orbit_params\":{\"reference_system\":\"geocentric\",\"regime\":\"low-earth\",\"longitude\":null,\"semi_major_axis_km\":null,\"eccentricity\":null,\"periapsis_km\":null,\"apoapsis_km\":null,\"inclination_deg\":null,\"period_min\":null,\"lifespan_years\":null,\"epoch\":null,\"mean_motion\":null,\"raan\":null},\"mass_returned_kg\":null,\"mass_returned_lbs\":null,\"flight_time_sec\":null,\"cargo_manifest\":null}]},\"fairings\":{\"reused\":null,\"recovery_attempt\":null,\"recovered\":null,\"ship\":null}},\"telemetry\":{\"flight_club\":null},\"launch_site\":{\"site_id\":\"ksc_lc_39a\",\"site_name\":\"KSC LC 39A\",\"site_name_long\":\"Kennedy Space Center Historic Launch Complex 39A\"},\"launch_success\":null,\"links\":{\"mission_patch\":null,\"mission_patch_small\":null,\"reddit_campaign\":null,\"reddit_launch\":null,\"reddit_recovery\":null,\"reddit_media\":null,\"presskit\":null,\"article_link\":null,\"wikipedia\":null,\"video_link\":null},\"details\":\"Demonstration mission to ISS for NASA with an uncrewed Dragon 2 capsule.\",\"upcoming\":true,\"static_fire_date_utc\":\"2018-11-01T00:00:00.000Z\"},{\"flight_number\":71,\"mission_name\":\"Iridium NEXT Mission 8\",\"launch_year\":\"2018\",\"launch_date_unix\":1541030400,\"launch_date_utc\":\"2018-11-01T00:00:00.000Z\",\"launch_date_local\":\"2018-10-31T17:00:00-07:00\",\"rocket\":{\"rocket_id\":\"falcon9\",\"rocket_name\":\"Falcon 9\",\"rocket_type\":\"FT\",\"first_stage\":{\"cores\":[{\"core_serial\":null,\"flight\":null,\"block\":null,\"reused\":null,\"land_success\":null,\"landing_type\":null,\"landing_vehicle\":null}]},\"second_stage\":{\"block\":null,\"payloads\":[{\"payload_id\":\"Iridium NEXT 8\",\"norad_id\":[],\"reused\":false,\"customers\":[\"Iridium Communications\"],\"nationality\":\"United States\",\"manufacturer\":\"Thales Alenia Space\",\"payload_type\":\"Satellite\",\"payload_mass_kg\":9600,\"payload_mass_lbs\":21164.38,\"orbit\":\"PO\",\"orbit_params\":{\"reference_system\":\"geocentric\",\"regime\":\"low-earth\",\"longitude\":null,\"semi_major_axis_km\":6994.843,\"eccentricity\":0.001022,\"periapsis_km\":609.559,\"apoapsis_km\":623.856,\"inclination_deg\":86.6763,\"period_min\":97.034,\"lifespan_years\":15,\"epoch\":\"2018-07-25T19:08:38.000Z\",\"mean_motion\":14.840065,\"raan\":181.7071}}]},\"fairings\":{\"reused\":false,\"recovery_attempt\":null,\"recovered\":null,\"ship\":null}},\"telemetry\":{\"flight_club\":null},\"launch_site\":{\"site_id\":\"vafb_slc_4e\",\"site_name\":\"VAFB SLC 4E\",\"site_name_long\":\"Vandenberg Air Force Base Space Launch Complex 4E\"},\"launch_success\":null,\"links\":{\"mission_patch\":null,\"mission_patch_small\":null,\"reddit_campaign\":null,\"reddit_launch\":null,\"reddit_recovery\":null,\"reddit_media\":null,\"presskit\":null,\"article_link\":null,\"wikipedia\":null,\"video_link\":null},\"details\":null,\"upcoming\":true,\"static_fire_date_utc\":null},{\"flight_number\":72,\"mission_name\":\"SSO-A\",\"launch_year\":\"2018\",\"launch_date_unix\":1543622400,\"launch_date_utc\":\"2018-12-01T00:00:00.000Z\",\"launch_date_local\":\"2018-11-30T16:00:00-08:00\",\"rocket\":{\"rocket_id\":\"falcon9\",\"rocket_name\":\"Falcon 9\",\"rocket_type\":\"FT\",\"first_stage\":{\"cores\":[{\"core_serial\":null,\"flight\":null,\"block\":null,\"reused\":null,\"land_success\":null,\"landing_type\":null,\"landing_vehicle\":null}]},\"second_stage\":{\"block\":null,\"payloads\":[{\"payload_id\":\"SSO-A\",\"norad_id\":[],\"reused\":false,\"customers\":[\"Spaceflight Industries, Inc\"],\"nationality\":null,\"manufacturer\":null,\"payload_type\":\"Satellite\",\"payload_mass_kg\":null,\"payload_mass_lbs\":null,\"orbit\":\"SSO\",\"orbit_params\":{\"reference_system\":\"geocentric\",\"regime\":\"sun-synchronous\",\"longitude\":null,\"semi_major_axis_km\":null,\"eccentricity\":null,\"periapsis_km\":null,\"apoapsis_km\":null,\"inclination_deg\":null,\"period_min\":null,\"lifespan_years\":null}}]},\"fairings\":{\"reused\":false,\"recovery_attempt\":null,\"recovered\":null,\"ship\":null}},\"telemetry\":{\"flight_club\":null},\"launch_site\":{\"site_id\":\"vafb_slc_4e\",\"site_name\":\"VAFB SLC 4E\",\"site_name_long\":\"Vandenberg Air Force Base Space Launch Complex 4E\"},\"launch_success\":null,\"links\":{\"mission_patch\":null,\"mission_patch_small\":null,\"reddit_campaign\":null,\"reddit_launch\":null,\"reddit_recovery\":null,\"reddit_media\":null,\"presskit\":null,\"article_link\":null,\"wikipedia\":null,\"video_link\":null},\"details\":null,\"upcoming\":true,\"static_fire_date_utc\":null}]"
+				}
+			]
+		},
+		{
+			"name": "get_roadster",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.spacexdata.com/v3/roadster",
+					"protocol": "https",
+					"host": [
+						"api",
+						"spacexdata",
+						"com"
+					],
+					"path": [
+						"v3",
+						"roadster"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Roadster",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.spacexdata.com/v3/roadster",
+							"protocol": "https",
+							"host": [
+								"api",
+								"spacexdata",
+								"com"
+							],
+							"path": [
+								"v3",
+								"roadster"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [],
+					"cookie": [],
+					"body": "{\n  \"name\": \"Elon Musk's Tesla Roadster\",\n  \"launch_date_utc\": \"2018-02-06T20:45:00.000Z\",\n  \"launch_date_unix\": 1517949900,\n  \"launch_mass_kg\": 1350,\n  \"launch_mass_lbs\": 2976,\n  \"norad_id\": 43205,\n  \"epoch_jd\": 2458366.482893519,\n  \"orbit_type\": \"heliocentric\",\n  \"apoapsis_au\": 1.663752666195018,\n  \"periapsis_au\": 0.9860753850280967,\n  \"semi_major_axis_au\": 137.6352649527045,\n  \"eccentricity\": 0.2557438701934329,\n  \"inclination\": 1.077489463372395,\n  \"longitude\": 317.0956890012447,\n  \"periapsis_arg\": 177.4902539777412,\n  \"period_days\": 557.0317797709337,\n  \"speed_kph\": 75139.344,\n  \"speed_mph\": 46689.409320624,\n  \"earth_distance_km\": 194902757.14697537,\n  \"earth_distance_mi\": 121106921.11117323,\n  \"mars_distance_km\": 159204213.85950035,\n  \"mars_distance_mi\": 98924881.57009159,\n  \"wikipedia\": \"https://en.wikipedia.org/wiki/Elon_Musk%27s_Tesla_Roadster\",\n  \"details\": \"Elon Musk's Tesla Roadster is an electric sports car that served as the dummy payload for the February 2018 Falcon Heavy test flight and is now an artificial satellite of the Sun. Starman, a mannequin dressed in a spacesuit, occupies the driver's seat. The car and rocket are products of Tesla and SpaceX, both companies founded by Elon Musk. This 2008-model Roadster was previously used by Musk for commuting, and is the only consumer car sent into space.\"\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
