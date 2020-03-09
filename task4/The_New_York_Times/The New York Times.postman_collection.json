@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "cad65704-af1f-4194-9919-60067ed35a65",
+		"name": "The New York Times",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get_most_viewed",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=l1Jiz3VeAXCieSLyRX5vZNPLwfqjOLTW",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nytimes",
+						"com"
+					],
+					"path": [
+						"svc",
+						"mostpopular",
+						"v2",
+						"viewed",
+						"1.json"
+					],
+					"query": [
+						{
+							"key": "api-key",
+							"value": "l1Jiz3VeAXCieSLyRX5vZNPLwfqjOLTW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_reviews_keyword_godfather",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=godfather&api-key=l1Jiz3VeAXCieSLyRX5vZNPLwfqjOLTW",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nytimes",
+						"com"
+					],
+					"path": [
+						"svc",
+						"movies",
+						"v2",
+						"reviews",
+						"search.json"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "godfather"
+						},
+						{
+							"key": "api-key",
+							"value": "l1Jiz3VeAXCieSLyRX5vZNPLwfqjOLTW"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_reviews_on_stephen_king",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nytimes.com/svc/books/v3/reviews.json?author=Stephen+King&api-key=l1Jiz3VeAXCieSLyRX5vZNPLwfqjOLTW",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nytimes",
+						"com"
+					],
+					"path": [
+						"svc",
+						"books",
+						"v3",
+						"reviews.json"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Stephen+King"
+						},
+						{
+							"key": "api-key",
+							"value": "l1Jiz3VeAXCieSLyRX5vZNPLwfqjOLTW"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

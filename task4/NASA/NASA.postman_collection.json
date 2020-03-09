@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "8231a48d-b5b8-4469-bc81-6ffde5995a78",
+		"name": "NASA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get_closest_asteroids",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/neo/rest/v1/feed?start_date=2020-03-03&end_date=2020-03-08&api_key=0111dpNYFWLzUcw5Vr2fRdz8CZf9DbQGdDdtnSe2",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"neo",
+						"rest",
+						"v1",
+						"feed"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2020-03-03"
+						},
+						{
+							"key": "end_date",
+							"value": "2020-03-08"
+						},
+						{
+							"key": "api_key",
+							"value": "0111dpNYFWLzUcw5Vr2fRdz8CZf9DbQGdDdtnSe2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_pic_of_the_day",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/planetary/apod?date=2020-01-30&hd=true&api_key=0111dpNYFWLzUcw5Vr2fRdz8CZf9DbQGdDdtnSe2",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"planetary",
+						"apod"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2020-01-30"
+						},
+						{
+							"key": "hd",
+							"value": "true"
+						},
+						{
+							"key": "api_key",
+							"value": "0111dpNYFWLzUcw5Vr2fRdz8CZf9DbQGdDdtnSe2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_mars_weather_service",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/insight_weather/?api_key=0111dpNYFWLzUcw5Vr2fRdz8CZf9DbQGdDdtnSe2&feedtype=json&ver=1.0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"insight_weather",
+						""
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "0111dpNYFWLzUcw5Vr2fRdz8CZf9DbQGdDdtnSe2"
+						},
+						{
+							"key": "feedtype",
+							"value": "json"
+						},
+						{
+							"key": "ver",
+							"value": "1.0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
