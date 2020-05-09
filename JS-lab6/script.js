@@ -320,15 +320,11 @@
     ]
 
     function getPosts(skip = 0, top = 10, filterConfig = undefined) {
-        if(typeof skip !== 'number' || typeof top !== 'number'){
-            console.log('wrong input type');
-            return;
-        }
         if(filterConfig){
             let requiredPosts = posts;
             for (let param in filterConfig){
                 if(param === 'author'){
-                    requiredPosts = requiredPosts.filter(post => post.author === filterConfig.author);
+                    requiredPosts = requiredPosts.filter(post => post.author.includes(filterConfig.author));
                 }
                 else if(param === 'dateFrom'){
                     requiredPosts = requiredPosts.filter(post => post.createdAt > filterConfig.dateFrom);
@@ -336,34 +332,23 @@
                 else if(param === 'dateTo'){
                     requiredPosts = requiredPosts.filter(post => post.createdAt <= filterConfig.dateTo);
                 }
-                else if(param == 'hashtags'){
-                    for(let i=0; i < filterConfig.hashtags.length; i++){
-                        requiredPosts = requiredPosts.filter(function (post) {
-                            let has = false;
-                            for (let j = 0; j < post.hashtags.length; j++){
-                                if (post.hashtags[j].includes(filterConfig.hashtags[i]))
-                                    has = true;
+                else if(param === 'hashtags'){
+                    requiredPosts = requiredPosts.filter(function (post) {
+                        for(let i = 0; i < filterConfig.hashtags.length; i++){
+                            if(post.hashtags.some(hashtag => hashtag.includes(filterConfig.hashtags[i]))){
+                                return true;
                             }
-                            if(has) return true;
-                            else return false;
-                        });
-                    }
+                        }
+                    });
                 }
             }
-            requiredPosts.sort(comparator);
+            requiredPosts.sort((a,b) => a.createdAt - b.createdAt);
             return requiredPosts.slice(skip, skip + top);
         }
-        let requiredPosts = posts.sort(comparator);
+        let requiredPosts = posts.sort((a,b) => a.createdAt - b.createdAt);
         return requiredPosts.slice(skip,skip + top);
     }
 
-    function comparator(a,b){
-        if(a.createdAt < b.createdAt)
-            return -1;
-        else if (a.createdAt > b.createdAt)
-            return 1;
-        else return 0;
-    }
 
     function getPost(id){
         if(typeof id === 'number')
@@ -372,25 +357,12 @@
     }
 
     function validatePost(post){
-        if(!post.id|| typeof post.id !== 'string') {
+        if(!post.description || typeof post.description !== 'string' || post.description.length > 200)
             return false;
-        }
-        if(posts.some(element => element.id === post.id))
+        if(post.photoLink && typeof post.photoLink !== 'string')
             return false;
-        if(!post.description || typeof post.description !== 'string' || post.description.length > 200){
-            return false;}
-        if(!post.createdAt || Object.prototype.toString.call(post.createdAt) !== '[object Date]'){
-            return false;}
-        if (!post.author || typeof post.author !== 'string'){
-            return false;}
-        if(post.photoLink && typeof post.photoLink !== 'string'){
-            return false;}
         if(post.hashtags){
             if(!post.hashtags.every(tag => typeof tag === 'string'))
-                return false;
-        }
-        if(post.likes){
-            if(!post.likes.every(like => typeof like === 'string'))
                 return false;
         }
         return true;
@@ -398,6 +370,12 @@
 
     function addPost(post){
         if(validatePost(post)){
+            const date = new Date();
+            const id = date;
+            const author = 'user' + id;
+            post.createdAt = date;
+            post.id = id;
+            post.author = author;
             posts.push(post);
             return true;
         }
@@ -405,14 +383,18 @@
     }
 
     function editPost(id,post){
-        for(let param in post){
-            if(param === 'id' || param === 'author' || param === 'createdAt' || param === 'likes') {
-                console.log('no edit access');
-                return false;
-            }
-        }
-        if(!validatePost(post))
+        if(post.description){
+            if(typeof post.description !== 'string' || post.description.length > 200 )
             return false;
+        }
+        if(post.photoLink){
+            if (typeof post.photoLink !== 'string')
+            return false;
+        }
+        if(post.hashtags){
+            if(!post.hashtags.every(tag => typeof tag === 'string'))
+                return false;
+        }
         let editPost = getPost(id);
         for(let param in post){
             editPost[param] = post[param];
@@ -424,7 +406,7 @@
         if(typeof id === 'string'){
             let index = posts.findIndex(post => post.id === id);
             if(index !== -1){
-                posts.slice(index,1);
+                posts.splice(index,1);
                 return true;
             }
         }
@@ -436,42 +418,40 @@
     console.log("Top 5 posts:");
     console.log(getPosts(0,5));
 
-    console.log("Top 5 posts, skip 2 posts, hashTag: ss (auto sort by created date):");
-    console.log(getPosts(2,5, {hashTags: ['ss']}));
+    console.log("Top 5 posts, skip 0 posts, hashTag: ss, life (auto sort by created date):");
+    console.log(getPosts(0,5, {hashtags: ['ss', 'life']}));
 
-    console.log("Top 2 posts, skip 3 posts, author sstrazdinaa:");
-    console.log(getPosts(3,2, {author: 'sstrazdinaa'}));
-
-    console.log("Get posts with incorrect input:");
-    console.log(getPosts('10',2, {author: 'you'}));
+    console.log("Top 2 posts, skip 0 posts, author sstrazdinaa:");
+    console.log(getPosts(0,2, {author: 'sstrazdin'}));
 
     console.log("Get post with id 1:");
     console.log(getPost('1'));
 
-    console.log("Get post with id 1165542 (non existent):");
-    console.log(getPost('1165542'));
+    console.log("Get post with id 116 (non existent):");
+    console.log(getPost('116'));
 
     console.log("Get post with wrong input:");
     console.log(getPost(2));
 
-    console.log("Validating post #1:");
-    console.log(validatePost({id: '123', createdAt: new Date(),  description: 'validating', author:'thatgirl', hashTags: ['test']}));
+    console.log("Validating post 1:");
+    console.log(validatePost(getPost('1')));
 
-    console.log("Validating post #2 (without id and author):");
-    console.log(validatePost({createdAt: new Date(),  description: 'validating', photoLink: "www.url"}));
+    console.log("Add new post with correct parameters:");
+    addPost({description: 'keep calm and be happy', hashtags: ['life']});
+    console.log(getPosts(20, 22));
 
-    console.log("Add new post with correct parameters and get it:");
-    addPost({id: "123", createdAt: new Date(), description: 'keep calm and be happy', author: "human", likes: ['eraztuna']});
-    console.log(getPost('123'));
+    console.log('Add post with wrong parameters:');
+    console.log(addPost({description:'', hashtags:['',12]}));
 
-    console.log("Edit newly added post:");
-    editPost('123',{description: "keep calm and drink wine", photoLink: "there's no meme here:("});
-    console.log(getPost('123'));
+    console.log('Edit post');
+    editPost('20', {description:'we\'re blue', hashtags:['blue', 'sad']});
+    console.log(getPost('20'));
 
-    console.log("Try to edit unchangeable parameters:");
-    editPost('123',{id: '111', description: "i want to edit!", photoLink: "there\'s no meme here:("});
+    console.log('Edit post with wrong info');
+    editPost('20', {description:'we\'re blue.', hashtags:['blue', 13]});
+    console.log(getPost('20'));
 
-    console.log("Delete newly edited post and get it:");
-    removePost('123');
-    console.log(getPost('123'));
+    console.log('Delete post 20');
+    console.log(removePost('1'));
+
 }());
