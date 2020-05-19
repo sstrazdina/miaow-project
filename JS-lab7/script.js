@@ -62,23 +62,21 @@ class PostCollection {
     }
 
     edit(id, post) {
+        let editPost = this.get(id);
         if (post.description) {
-            if (typeof post.description !== 'string' || post.description.length > 200)
-                return false;
+            editPost.description = post.description;
         }
         if (post.photoLink) {
-            if (typeof post.photoLink !== 'string')
-                return false;
+            editPost.photoLink = post.photoLink;
         }
         if (post.hashtags) {
-            if (!post.hashtags.every(tag => typeof tag === 'string'))
-                return false;
+            editPost.hashtags = post.hashtags
         }
-        let editPost = this.get(id);
-        for (let param in post) {
-            editPost[param] = post[param];
-        }
-        return true;
+
+        if (PostCollection.validate(editPost)) {
+            this._posts.push(editPost);
+            return true;
+        } else return false
     }
 
     remove(id) {
@@ -88,6 +86,25 @@ class PostCollection {
                 this._posts.splice(index, 1);
                 return true;
             }
+        }
+        return false;
+    }
+
+    addLike(id, username) {
+        let editPost = this.get(id);
+        if (!editPost.likes.includes(username)) {
+            editPost.likes.push(username);
+            return true;
+        }
+        return false;
+    }
+
+    deleteLike(id, username){
+        let editPost = this.get(id);
+        let index = editPost.likes.indexOf(username);
+        if (index !== -1) {
+            editPost.likes.splice(index,1);
+            return true;
         }
         return false;
     }
@@ -466,18 +483,18 @@ console.log(posts.addAll([
     },
 
     {
-     description: '',
-     hashtags: [
-         'invalid'
-     ]
+        description: '',
+        hashtags: [
+            'invalid'
+        ]
     },
 
- {
-  description: 'That\'s an invalid post',
-  hashtags: [
-      'test', true
-  ]
- }
+    {
+        description: 'That\'s an invalid post',
+        hashtags: [
+            'test', true
+        ]
+    }
 ]));
 
 console.log('Clear everything and attempt to get posts');
