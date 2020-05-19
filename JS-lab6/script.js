@@ -1,4 +1,4 @@
-;(function() {
+;(function () {
     let posts = [
         {
             id: '1',
@@ -320,56 +320,53 @@
     ]
 
     function getPosts(skip = 0, top = 10, filterConfig = undefined) {
-        if(filterConfig){
+        if (filterConfig) {
             let requiredPosts = posts;
-            for (let param in filterConfig){
-                if(param === 'author'){
+            for (let param in filterConfig) {
+                if (param === 'author') {
                     requiredPosts = requiredPosts.filter(post => post.author.includes(filterConfig.author));
-                }
-                else if(param === 'dateFrom'){
+                } else if (param === 'dateFrom') {
                     requiredPosts = requiredPosts.filter(post => post.createdAt > filterConfig.dateFrom);
-                }
-                else if(param === 'dateTo'){
+                } else if (param === 'dateTo') {
                     requiredPosts = requiredPosts.filter(post => post.createdAt <= filterConfig.dateTo);
-                }
-                else if(param === 'hashtags'){
+                } else if (param === 'hashtags') {
                     requiredPosts = requiredPosts.filter(function (post) {
-                        for(let i = 0; i < filterConfig.hashtags.length; i++){
-                            if(post.hashtags.some(hashtag => hashtag.includes(filterConfig.hashtags[i]))){
+                        for (let i = 0; i < filterConfig.hashtags.length; i++) {
+                            if (post.hashtags.some(hashtag => hashtag.includes(filterConfig.hashtags[i]))) {
                                 return true;
                             }
                         }
                     });
                 }
             }
-            requiredPosts.sort((a,b) => a.createdAt - b.createdAt);
+            requiredPosts.sort((a, b) => a.createdAt - b.createdAt);
             return requiredPosts.slice(skip, skip + top);
         }
-        let requiredPosts = posts.sort((a,b) => a.createdAt - b.createdAt);
-        return requiredPosts.slice(skip,skip + top);
+        let requiredPosts = posts.sort((a, b) => a.createdAt - b.createdAt);
+        return requiredPosts.slice(skip, skip + top);
     }
 
 
-    function getPost(id){
-        if(typeof id === 'number')
+    function getPost(id) {
+        if (typeof id === 'number')
             console.log('wrong parameter type');
         return posts.find(post => post.id === id);
     }
 
-    function validatePost(post){
-        if(!post.description || typeof post.description !== 'string' || post.description.length > 200)
+    function validatePost(post) {
+        if (!post.description || typeof post.description !== 'string' || post.description.length > 200)
             return false;
-        if(post.photoLink && typeof post.photoLink !== 'string')
+        if (post.photoLink && typeof post.photoLink !== 'string')
             return false;
-        if(post.hashtags){
-            if(!post.hashtags.every(tag => typeof tag === 'string'))
+        if (post.hashtags) {
+            if (!post.hashtags.every(tag => typeof tag === 'string'))
                 return false;
         }
         return true;
     }
 
-    function addPost(post){
-        if(validatePost(post)){
+    function addPost(post) {
+        if (validatePost(post)) {
             const date = new Date();
             const id = date;
             const author = 'user' + id;
@@ -378,35 +375,32 @@
             post.author = author;
             posts.push(post);
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
-    function editPost(id,post){
-        if(post.description){
-            if(typeof post.description !== 'string' || post.description.length > 200 )
-            return false;
-        }
-        if(post.photoLink){
-            if (typeof post.photoLink !== 'string')
-            return false;
-        }
-        if(post.hashtags){
-            if(!post.hashtags.every(tag => typeof tag === 'string'))
-                return false;
-        }
+    function editPost(id, post) {
         let editPost = getPost(id);
-        for(let param in post){
-            editPost[param] = post[param];
+        if (post.description) {
+            editPost.description = post.description;
         }
-        return true;
+        if (post.photoLink) {
+            editPost.photoLink = post.photoLink;
+        }
+        if (post.hashtags) {
+            editPost.hashtags = post.hashtags
+        }
+
+        if (validatePost(editPost)) {
+            posts.push(editPost);
+            return true;
+        } else return false
     }
 
-    function removePost(id){
-        if(typeof id === 'string'){
+    function removePost(id) {
+        if (typeof id === 'string') {
             let index = posts.findIndex(post => post.id === id);
-            if(index !== -1){
-                posts.splice(index,1);
+            if (index !== -1) {
+                posts.splice(index, 1);
                 return true;
             }
         }
@@ -416,13 +410,13 @@
     //Tests
     //Testing
     console.log("Top 5 posts:");
-    console.log(getPosts(0,5));
+    console.log(getPosts(0, 5));
 
     console.log("Top 5 posts, skip 0 posts, hashTag: ss, life (auto sort by created date):");
-    console.log(getPosts(0,5, {hashtags: ['ss', 'life']}));
+    console.log(getPosts(0, 5, {hashtags: ['ss', 'life']}));
 
     console.log("Top 2 posts, skip 0 posts, author sstrazdinaa:");
-    console.log(getPosts(0,2, {author: 'sstrazdin'}));
+    console.log(getPosts(0, 2, {author: 'sstrazdin'}));
 
     console.log("Get post with id 1:");
     console.log(getPost('1'));
@@ -441,14 +435,14 @@
     console.log(getPosts(20, 22));
 
     console.log('Add post with wrong parameters:');
-    console.log(addPost({description:'', hashtags:['',12]}));
+    console.log(addPost({description: '', hashtags: ['', 12]}));
 
     console.log('Edit post');
-    editPost('20', {description:'we\'re blue', hashtags:['blue', 'sad']});
+    editPost('20', {description: 'we\'re blue', hashtags: ['blue', 'sad']});
     console.log(getPost('20'));
 
     console.log('Edit post with wrong info');
-    editPost('20', {description:'we\'re blue.', hashtags:['blue', 13]});
+    editPost('20', {description: 'we\'re blue.', hashtags: ['blue', 13]});
     console.log(getPost('20'));
 
     console.log('Delete post 20');
